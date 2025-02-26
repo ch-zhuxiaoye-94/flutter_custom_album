@@ -59,24 +59,28 @@ class _ImagePickerDemoState extends State<ImagePickerDemo> {
                     ),
                   ),
                 if (_pickedPhotoList!.length < kMaxPickImageCount)
-                  GestureDetector(
-                    onTap: _pickPhotoFromGallery,
-                    child: Container(
-                      color: Colors.black12,
-                      width: size,
-                      height: size,
-                      child: const Icon(
-                        Icons.add,
-                        size: 48,
-                        color: Colors.black38,
-                      ),
-                    ),
-                  )
+                  buildAddPhotoBtn(size)
               ],
             );
           }
       ),
     );
+  }
+
+  GestureDetector buildAddPhotoBtn(double size) {
+    return GestureDetector(
+                  onTap: _pickPhotoFromGallery,
+                  child: Container(
+                    color: Colors.black12,
+                    width: size,
+                    height: size,
+                    child: const Icon(
+                      Icons.add,
+                      size: 48,
+                      color: Colors.black38,
+                    ),
+                  ),
+                );
   }
 
   Future<XFile> _compressImage(File image) async{
